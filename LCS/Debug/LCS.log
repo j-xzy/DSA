@@ -1,0 +1,8 @@
+﻿  stdafx.cpp
+  AssemblyInfo.cpp
+  LCS.cpp
+LCS.cpp(37): error C2976: 'std::array': too few template arguments
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\utility(363): note: see declaration of 'std::array'
+LCS.cpp(37): error C3699: '^': cannot use this indirection on type 'std::array'
+  LCS.cpp(37): note: compiler replacing '^' with '*' to continue parsing
+  Generating Code...

@@ -27,7 +27,12 @@ template<typename T> struct ListNode
 		pred = x;
 		return x;
 	};
-	ListNodePosi(T) insertAsSucc(T const& e) {};
+	ListNodePosi(T) insertAsSucc(T const& e) {
+		ListNodePosi(T) x = new ListNode(e, this,succ);
+		succ->pred = x;
+		succ = x;
+		return x;
+	};
 };
 
 template<typename T> class  List
@@ -88,6 +93,12 @@ public:
 		_size++;
 		return p->insertAsPred(e);
 	}
+	//插入p的后继
+	ListNodePosi(T) insertA(ListNodePosi(T) p, T const& e) {
+		_size++;
+		return p->insertAsSucc(e);
+
+	}
 
 	//插入末节点
 	ListNodePosi(T) insertAsLast(T const&e) {
@@ -125,17 +136,92 @@ public:
 		}
 		return oldSize - _size;
 	}
+
+	//有序列表唯一化
+	int uniquify() {
+		if (_size < 2)return 0;
+		int oldSize = _size;
+		ListNodePosi(T) p = first(); ListNodePosi(T) q;
+		while (trailer != (q = p->succ))
+		{
+			if (p->data != q->data) p = p->succ;
+			else
+			{
+				remove(q);
+			}
+		}
+		return oldSize - _size;
+	}
+
+	//有序列表查找（p的n个真前驱中）,找到不大于e的最后者
+	ListNodePosi(T) search(T const&e, int n, ListNodePosi(T) p) const
+	{
+		while (0 <= n--)
+		{
+			if (((p = p->pred)->data) <= e)
+			{
+				break;
+			}
+		}
+		return p;
+	}
+
+	//查找最大值(起始位置P的连续n个元素)
+	ListNodePosi(T) selectMax(ListNodePosi(T)p, int n) {
+		ListNodePosi(T)maxPos = p;
+		while (1 < n--)
+		{
+			if ((maxPos->data) < ((p = p->succ)->data))
+			{
+				maxPos = p;
+			}
+		}
+		return maxPos;
+	}
+
+	//选择排序(起始位置P的连续n个元素)
+	void selectionSort(ListNodePosi(T) p,int n) {
+		ListNodePosi(T) head = p->pred; ListNodePosi(T) tail = p;
+		for (int i = 0; i < n; i++) {
+			tail = tail->succ;
+		}
+		while (1<n)
+		{
+			//insertB(tail, remove(selectMax(head->succ, n))); insertB,remove需要new和delete，性能不好
+			//直接交换数据
+	        ListNodePosi(T) max = selectMax(head->succ, n);
+			T dataMax = max->data;
+			max->data = (tail->pred)->data;
+			(tail->pred)->data = dataMax;
+			tail = tail->pred; n--;
+		}
+	}
+
+	//对列表中起始于位置p的连续n个元素做插入排序
+	void insertionSort(ListNodePosi(T) p,int n) {
+		for (int r = 0;r <n ; r++)
+		{
+			insertA(search(p->data, r, p), p->data);
+			p = p->succ; remove(p->pred);
+		}
+	}
 };
 
 int main()
 {
 	List<int> list;
+	list.insertB(list.first(), 4);
+	list.insertB(list.first(), 4);
 	list.insertB(list.first(), 0);
 	list.insertB(list.first(), 0);
 	list.insertB(list.first(), 3);
 	list.insertB(list.first(), 3);
-	list.insertB(list.first(), 4);
-	list.insertB(list.first(), 4);
-	int n = list.deduplicate();
-}
+
+	list.insertionSort(list.first(), list.size());
+	for (int i = 0; i < list.size(); i++)
+	{
+		printf("%d\n", list[i]);
+	}
+
+ }
 

@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "vector", "vector\vector.vcx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "List", "List\List.vcxproj", "{474B8976-C609-4E32-ACFD-DF5D5FA408D6}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Stack", "Stack\Stack.vcxproj", "{FA3DC05A-4DD6-42C1-80DD-2A3B1A407F34}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -29,6 +31,14 @@ Global
 		{474B8976-C609-4E32-ACFD-DF5D5FA408D6}.Release|Win32.Build.0 = Release|Win32
 		{474B8976-C609-4E32-ACFD-DF5D5FA408D6}.Release|x64.ActiveCfg = Release|x64
 		{474B8976-C609-4E32-ACFD-DF5D5FA408D6}.Release|x64.Build.0 = Release|x64
+		{FA3DC05A-4DD6-42C1-80DD-2A3B1A407F34}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FA3DC05A-4DD6-42C1-80DD-2A3B1A407F34}.Debug|Win32.Build.0 = Debug|Win32
+		{FA3DC05A-4DD6-42C1-80DD-2A3B1A407F34}.Debug|x64.ActiveCfg = Debug|x64
+		{FA3DC05A-4DD6-42C1-80DD-2A3B1A407F34}.Debug|x64.Build.0 = Debug|x64
+		{FA3DC05A-4DD6-42C1-80DD-2A3B1A407F34}.Release|Win32.ActiveCfg = Release|Win32
+		{FA3DC05A-4DD6-42C1-80DD-2A3B1A407F34}.Release|Win32.Build.0 = Release|Win32
+		{FA3DC05A-4DD6-42C1-80DD-2A3B1A407F34}.Release|x64.ActiveCfg = Release|x64
+		{FA3DC05A-4DD6-42C1-80DD-2A3B1A407F34}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

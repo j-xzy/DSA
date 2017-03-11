@@ -1,3 +1,7 @@
-﻿  vector.cpp
+﻿  stdafx.cpp
+  AssemblyInfo.cpp
+  vector.cpp
+  Generating Code...
+  .NETFramework,Version=v4.5.2.AssemblyAttributes.cpp
   vector.vcxproj -> C:\Users\leovo\Documents\Learn\数据结构\dsa\Debug\vector.exe
   vector.vcxproj -> C:\Users\leovo\Documents\Learn\数据结构\dsa\Debug\vector.pdb (Full PDB)

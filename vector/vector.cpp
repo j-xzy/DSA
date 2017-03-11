@@ -1,5 +1,4 @@
 //vector.cpp : main project file.
-
 #include "stdafx.h"
 #include <vector>
 
@@ -19,7 +18,7 @@ public:
 	Fib1(int n) //初始化为不小于n的最小Fibonacci项
 	{
 		f = 1; g = 0;
-		while (g < n){
+		while (g < n) {
 			next();
 		}
 	} //fib(-1), fib(0)，O(log_phi(n))时间
@@ -40,11 +39,11 @@ public:
 
 };
 
-class Fib{
+class Fib {
 private:
 	int _f, _g;
 public:
-	Fib(int n){
+	Fib(int n) {
 		_f = 1; _g = 0;
 		while (_g < n)
 		{
@@ -52,17 +51,17 @@ public:
 		}
 	}
 
-	int get(){
+	int get() {
 		return _g;
 	}
 
-	void next(){
+	void next() {
 		_g = _g + _f;
 		_f = _g - _f;
 		//return _g;
 	}
 
-	void pre(){
+	void pre() {
 		_f = _g - _f;
 		_g = _g - _f;
 		//return _g;
@@ -75,7 +74,7 @@ protected:
 	Rank _size; int _capacity; T*_elem;
 
 	//复制数组区间A[lo, hi)
-	void myVector<T>::copyFrom(T const*A, Rank lo, Rank hi){
+	void myVector<T>::copyFrom(T const*A, Rank lo, Rank hi) {
 		_elem = new T[_capacity = 2 * (hi - lo)];
 		size = 0;
 		while (lo < hi)
@@ -85,22 +84,22 @@ protected:
 	}
 
 	//向量空间不足时扩容
-	void myVector<T>::expand(){
+	void myVector<T>::expand() {
 		if (_size < _capacity)return;
 		_capacity = _capacity < DEFAULT_CAPACITY ? DEFAULT_CAPACITY : _capacity;
 		T*oldElem = _elem; _elem = new T[_capacity <<= 1];
-		for (int i = 0; i < _size; i++){
+		for (int i = 0; i < _size; i++) {
 			_elem[i] = oldElem[i];
 		}
 		delete[] oldElem;
 	}
 
 	//装填因子过小压缩向量所占空间
-	void shrink(){
+	void shrink() {
 		if (_capacity < DEFAULT_CAPACITY << 1)return;
 		if (_size << 2>_capacity)return;
 		T *oldElem = _elem; _elem = new T[_capacity >>= 1];
-		for (int i = 0; i < _size; i++){
+		for (int i = 0; i < _size; i++) {
 			_elem[i] = oldElem[i];
 		}
 		delete[]oldElem;
@@ -123,17 +122,17 @@ public:
 	/**只读访问接口**/
 
 	//返回大小
-	Rank size() const{ return _size; }
+	Rank size() const { return _size; }
 
 	//重载下标操作符，可以类似于数组形式引用各元素
-	T& operator[] (Rank r) const{
+	T& operator[] (Rank r) const {
 		return _elem[r];
 	};
 
 	//将e作为秩为r元素插入
-	Rank insert(Rank r, T const& e){
+	Rank insert(Rank r, T const& e) {
 		expand();
-		for (int i = _size; i > r; i--){
+		for (int i = _size; i > r; i--) {
 			_elem[i] = _elem[i - 1];
 		}
 		_elem[r] = e; _size++;
@@ -141,7 +140,7 @@ public:
 	}
 
 	//删除区间[lo,hi)
-	int remove(Rank lo, Rank hi){
+	int remove(Rank lo, Rank hi) {
 		if (lo == hi)return 0;
 		while (hi < _size)
 		{
@@ -153,20 +152,20 @@ public:
 	}
 
 	//删除向量中秩为r的元素
-	T remove(Rank r){
+	T remove(Rank r) {
 		T e = _elem[r];
 		remove(r, r + 1);
 		return e;
 	}
 
 	//在命中多个元素时返回秩最大值
-	Rank find(T const &e, Rank lo, Rank hi){
+	Rank find(T const &e, Rank lo, Rank hi) {
 		while ((lo < hi--) && (e != _elem[hi]));
 		return hi;
 	}
 
 	//删除重复的元素
-	int deduplicate(){
+	int deduplicate() {
 		int oldsize = _size;
 		Rank i = 1;
 		while (i < _size)
@@ -182,21 +181,21 @@ public:
 		for (int i = 0; i < _size; i++) visit(_elem[i]);
 	} //遍历向量
 
-	//返回向量中逆序相邻元素对的总数
-	int disordered()const{
+	  //返回向量中逆序相邻元素对的总数
+	int disordered()const {
 		int n = 0;
-		for (int i = 1; i < _size; i++){
+		for (int i = 1; i < _size; i++) {
 			n += (_elem[i - 1]>_elem[i]);
 		}
 		return n;
 	}
 
 	//删除重复元素
-	int uniquify(){
+	int uniquify() {
 		Rank i = 0; j = 0;
 		while (++j < _size)
 		{
-			if (_elem[i] != _elem[j]){
+			if (_elem[i] != _elem[j]) {
 				_elem[++i] = _elem[j];
 			}
 		}
@@ -205,14 +204,14 @@ public:
 	}
 
 	//有序向量查找
-	static Rank binSearch(T *A, T const &e, Rank lo, Rank hi){
+	static Rank binSearch(T *A, T const &e, Rank lo, Rank hi) {
 		while (lo < hi)
 		{
 			Rank mi = (lo + hi) >> 1;
-			if (e < A[mi]){
+			if (e < A[mi]) {
 				hi = mi;
 			}
-			else if (A[mi] < e){
+			else if (A[mi] < e) {
 				lo = mi + 1;
 			}
 			else
@@ -223,15 +222,15 @@ public:
 		return -1;
 	}
 
-	static Rank recurbinSearch(T *A, T const &e, Rank lo, Rank hi){
-		if (A[(lo + hi) >> 1] == e){
+	static Rank recurbinSearch(T *A, T const &e, Rank lo, Rank hi) {
+		if (A[(lo + hi) >> 1] == e) {
 			return (lo + hi) >> 1;
 		}
 		else if (e < A[(lo + hi) >> 1])
 		{
 			return recurbinSearch(A, e, lo, (lo + hi) >> 1);
 		}
-		else if (A[(lo + hi) >> 1] < e){
+		else if (A[(lo + hi) >> 1] < e) {
 
 			return recurbinSearch(A, e, (((lo + hi) >> 1) + 1), hi);
 		}
@@ -273,7 +272,7 @@ public:
 	}
 
 	//有序向量查找返回不大于e的秩最大者
-	static Rank binSearch2(T *A, T const &e, Rank lo, Rank hi){
+	static Rank binSearch2(T *A, T const &e, Rank lo, Rank hi) {
 		while (lo < hi)
 		{
 			int mi = (lo + hi) >> 1;
@@ -282,7 +281,7 @@ public:
 		return --lo;
 	}
 
-	void bubbleSort1(Rank lo, Rank hi){
+	void bubbleSort1(Rank lo, Rank hi) {
 		bool sorted = false;
 		int loo = lo;
 		while (!sorted)
@@ -290,7 +289,7 @@ public:
 			sorted = true;
 			while (++lo<hi)
 			{
-				if (_elem[lo - 1]>_elem[lo]){
+				if (_elem[lo - 1]>_elem[lo]) {
 					T temp = _elem[lo - 1];
 					_elem[lo - 1] = _elem[lo];
 					_elem[lo] = temp;
@@ -302,7 +301,7 @@ public:
 		}
 	}
 
-	void bubbleSort2(Rank lo, Rank hi){
+	void bubbleSort2(Rank lo, Rank hi) {
 		int last = lo + 1;
 		int initLo = lo;
 		while (last > lo)
@@ -310,7 +309,7 @@ public:
 			last = lo;
 			while (++lo<hi)
 			{
-				if (_elem[lo - 1]>_elem[lo]){
+				if (_elem[lo - 1]>_elem[lo]) {
 					T temp = _elem[lo - 1];
 					_elem[lo - 1] = _elem[lo];
 					_elem[lo] = temp;
@@ -323,7 +322,7 @@ public:
 	}
 
 	//归并排序
-	void mergeSort(Rank lo, Rank hi){
+	void mergeSort(Rank lo, Rank hi) {
 		if (hi - lo < 2)return;
 		int mi = (lo + hi) >> 1;
 		mergeSort(lo, mi);
@@ -332,17 +331,17 @@ public:
 	}
 
 private:
-	void merge(Rank lo, Rank mi, Rank hi){
+	void merge(Rank lo, Rank mi, Rank hi) {
 		T *A = _elem + lo;
 		int lb = mi - lo;
 		T *B = new T[lb];
 		for (Rank i = 0; i < lb; B[i] = A[i++]);
 		int lc = hi - mi; T *C = _elem + mi;
-		for (Rank i = 0, j = 0, k = 0; (j < lb) || (k < lb);){
-			if (j < lb && (k >= lc || B[j] < C[k])){
+		for (Rank i = 0, j = 0, k = 0; (j < lb) || (k < lb);) {
+			if (j < lb && (k >= lc || B[j] < C[k])) {
 				A[i++] = B[j++];
 			}
-			if (k < lc && (j >= lb || C[k] <= B[j])){
+			if (k < lc && (j >= lb || C[k] <= B[j])) {
 				A[i++] = C[k++];
 			}
 		}
@@ -353,7 +352,7 @@ private:
 template<typename T>
 struct Increase
 {
-	virtual void operator()(T &e){ e++; }
+	virtual void operator()(T &e) { e++; }
 };
 
 
@@ -362,8 +361,8 @@ int main(array<System::String ^> ^args)
 	myVector<int> a;
 	int b[5];
 	for (int i = 0; i < 5; i++) {
-		printf("%d", b[i] = i*2);
+		printf("%d", b[i] = i * 2);
 	}
-    a.binSearch(b, 3, 0, 5);
-	
+	a.binSearch(b, 3, 0, 5);
+
 }

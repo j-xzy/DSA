@@ -272,6 +272,7 @@ public:
 		return -1;
 	}
 
+	//有序向量查找返回不大于e的秩最大者
 	static Rank binSearch2(T *A, T const &e, Rank lo, Rank hi){
 		while (lo < hi)
 		{
@@ -359,4 +360,10 @@ struct Increase
 int main(array<System::String ^> ^args)
 {
 	myVector<int> a;
+	int b[5];
+	for (int i = 0; i < 5; i++) {
+		printf("%d", b[i] = i*2);
+	}
+    a.binSearch(b, 3, 0, 5);
+	
 }

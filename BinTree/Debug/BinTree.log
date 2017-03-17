@@ -1,0 +1,15 @@
+﻿  BinTree.cpp
+c:\users\leovo\documents\learn\数据结构\dsa\bintree\bintree.cpp(46): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  c:\users\leovo\documents\learn\数据结构\dsa\bintree\bintree.cpp(45): note: while compiling class template member function 'int BinTree<int>::updateHeight(BinNode<T> *)'
+          with
+          [
+              T=int
+          ]
+  c:\users\leovo\documents\learn\数据结构\dsa\bintree\bintree.cpp(53): note: see reference to function template instantiation 'int BinTree<int>::updateHeight(BinNode<T> *)' being compiled
+          with
+          [
+              T=int
+          ]
+  c:\users\leovo\documents\learn\数据结构\dsa\bintree\bintree.cpp(82): note: see reference to class template instantiation 'BinTree<int>' being compiled
+  BinTree.vcxproj -> C:\Users\leovo\Documents\Learn\数据结构\dsa\Debug\BinTree.exe
+  BinTree.vcxproj -> C:\Users\leovo\Documents\Learn\数据结构\dsa\Debug\BinTree.pdb (Full PDB)

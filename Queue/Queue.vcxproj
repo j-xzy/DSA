@@ -18,6 +18,9 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="queue.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{DF39105E-C705-4848-A5B9-F078C107AE67}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>

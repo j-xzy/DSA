@@ -13,6 +13,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Queue", "Queue\Queue.vcxpro
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BinTree", "BinTree\BinTree.vcxproj", "{DF08F562-2B47-4521-82B6-615DA1ABBDF6}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Graph", "Graph\Graph.vcxproj", "{AF0F06C7-528F-43EA-91A9-6BFDF8060F7A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -59,6 +61,14 @@ Global
 		{DF08F562-2B47-4521-82B6-615DA1ABBDF6}.Release|Win32.Build.0 = Release|Win32
 		{DF08F562-2B47-4521-82B6-615DA1ABBDF6}.Release|x64.ActiveCfg = Release|x64
 		{DF08F562-2B47-4521-82B6-615DA1ABBDF6}.Release|x64.Build.0 = Release|x64
+		{AF0F06C7-528F-43EA-91A9-6BFDF8060F7A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{AF0F06C7-528F-43EA-91A9-6BFDF8060F7A}.Debug|Win32.Build.0 = Debug|Win32
+		{AF0F06C7-528F-43EA-91A9-6BFDF8060F7A}.Debug|x64.ActiveCfg = Debug|x64
+		{AF0F06C7-528F-43EA-91A9-6BFDF8060F7A}.Debug|x64.Build.0 = Debug|x64
+		{AF0F06C7-528F-43EA-91A9-6BFDF8060F7A}.Release|Win32.ActiveCfg = Release|Win32
+		{AF0F06C7-528F-43EA-91A9-6BFDF8060F7A}.Release|Win32.Build.0 = Release|Win32
+		{AF0F06C7-528F-43EA-91A9-6BFDF8060F7A}.Release|x64.ActiveCfg = Release|x64
+		{AF0F06C7-528F-43EA-91A9-6BFDF8060F7A}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
